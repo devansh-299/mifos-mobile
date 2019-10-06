@@ -49,7 +49,7 @@ public class UpdatePasswordFragment extends BaseFragment implements UpdatePasswo
     PreferencesHelper preferencesHelper;
 
     private View rootView;
-    private UpdatePasswordPayload payload;
+    private UpdatePasswordPayload payload;              // its a model
     private boolean isFocusLostNewPassword = false;
     private boolean isFocusLostConfirmPassword = false;
 
@@ -67,7 +67,7 @@ public class UpdatePasswordFragment extends BaseFragment implements UpdatePasswo
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_update_password, container, false);
-        setToolbarTitle(getString(R.string.change_password));
+        setToolbarTitle(getString(R.string.update_user));
         ButterKnife.bind(this, rootView);
         ((BaseActivity) getActivity()).getActivityComponent().inject(this);
         presenter.attachView(this);

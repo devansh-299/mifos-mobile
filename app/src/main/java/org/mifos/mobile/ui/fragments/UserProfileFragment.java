@@ -249,7 +249,7 @@ public class UserProfileFragment extends BaseFragment implements UserDetailsView
         });
     }
 
-    @OnClick(R.id.btn_change_password)
+    @OnClick(R.id.fab_edit)
     void changePassword() {
         startActivity(new Intent(getContext(), EditUserDetailActivity.class));
     }

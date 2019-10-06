@@ -155,7 +155,7 @@
 
     <string name="change_passcode">Change Passcode</string>
     <string name="change_app_passcode">Change App Passcode</string>
-    <string name="change_password">Change Password</string>
+    <string name="update_user">Update User Details</string>
     <string name="change_account_password">Change your Account Password</string>
     <string name="current_password">Current Password</string>
     <string name="new_password">New Password</string>
