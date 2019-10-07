@@ -285,12 +285,6 @@
                         android:layout_height="1dp"
                         android:layout_width="match_parent"/>
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_change_password"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/default_margin"
-                        android:layout_width="match_parent"
-                        android:text="@string/change_password"/>
 
                 </LinearLayout>
 

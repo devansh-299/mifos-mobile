@@ -6,6 +6,7 @@ package org.mifos.mobile.api.services;
 
 import org.mifos.mobile.api.ApiEndPoints;
 import org.mifos.mobile.models.UpdatePasswordPayload;
+import org.mifos.mobile.models.UpdateUserDetailsPayload;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
@@ -16,4 +17,7 @@ public interface UserDetailsService {
 
     @PUT(ApiEndPoints.USER)
     Observable<ResponseBody> updateAccountPassword(@Body UpdatePasswordPayload payload);
+
+    @PUT(ApiEndPoints.USER)
+    Observable<ResponseBody> updateUserDetails(@Body UpdateUserDetailsPayload payload);
 }

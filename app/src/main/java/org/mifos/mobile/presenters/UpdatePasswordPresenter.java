@@ -11,6 +11,7 @@ import org.mifos.mobile.api.DataManager;
 import org.mifos.mobile.api.local.PreferencesHelper;
 import org.mifos.mobile.injection.ApplicationContext;
 import org.mifos.mobile.models.UpdatePasswordPayload;
+import org.mifos.mobile.models.UpdateUserDetailsPayload;
 import org.mifos.mobile.presenters.base.BasePresenter;
 import org.mifos.mobile.ui.views.UpdatePasswordView;
 import org.mifos.mobile.utils.MFErrorParser;
@@ -29,6 +30,8 @@ public class UpdatePasswordPresenter extends BasePresenter<UpdatePasswordView> {
     private CompositeDisposable compositeDisposable;
     private DataManager dataManager;
     private PreferencesHelper preferencesHelper;
+
+    // Later I will try to rename this !  to something common for both
 
     @Inject
     public UpdatePasswordPresenter(@ApplicationContext Context context, DataManager dataManager,
@@ -76,6 +79,37 @@ public class UpdatePasswordPresenter extends BasePresenter<UpdatePasswordView> {
                     }
                 }));
     }
+
+    public void updateUserDetails(final UpdateUserDetailsPayload payload) {
+        checkViewAttached();
+        getMvpView().showProgress();
+        compositeDisposable.add(dataManager.updateUserDetails(payload)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<ResponseBody>() {
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
+                        getMvpView().hideProgress();
+                        getMvpView().showPasswordUpdatedSuccessfully();
+                       /// I guess these are not needed for my part!
+                       // updateAuthenticationToken(payload.getOffice());
+                       // updateAuthenticationToken(payload.getContactNumber());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        getMvpView().hideProgress();
+                        getMvpView().showError(MFErrorParser.errorMessage(e));
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                }));
+    }
+
+
 
     public void updateAuthenticationToken(String password) {
         String authenticationToken = Credentials.basic(preferencesHelper.getUserName(), password);

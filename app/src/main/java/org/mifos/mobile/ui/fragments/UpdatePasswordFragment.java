@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -18,6 +19,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import org.mifos.mobile.R;
 import org.mifos.mobile.api.local.PreferencesHelper;
 import org.mifos.mobile.models.UpdatePasswordPayload;
+import org.mifos.mobile.models.UpdateUserDetailsPayload;
 import org.mifos.mobile.presenters.UpdatePasswordPresenter;
 import org.mifos.mobile.ui.activities.SettingsActivity;
 import org.mifos.mobile.ui.activities.base.BaseActivity;
@@ -39,6 +41,12 @@ public class UpdatePasswordFragment extends BaseFragment implements UpdatePasswo
     @BindView(R.id.til_new_password)
     TextInputLayout tilNewPassword;
 
+    @BindView(R.id.edit_office_name)
+    EditText officeName;
+
+    @BindView(R.id.edit_contact_number)
+    EditText contactNumber;
+
     @BindView(R.id.til_confirm_new_password)
     TextInputLayout tilConfirmNewPassword;
 
@@ -50,6 +58,7 @@ public class UpdatePasswordFragment extends BaseFragment implements UpdatePasswo
 
     private View rootView;
     private UpdatePasswordPayload payload;              // its a model
+    private UpdateUserDetailsPayload payloadDetail;
     private boolean isFocusLostNewPassword = false;
     private boolean isFocusLostConfirmPassword = false;
 
@@ -86,6 +95,13 @@ public class UpdatePasswordFragment extends BaseFragment implements UpdatePasswo
         }
     }
 
+    @OnClick(R.id.btn_update_details)
+    void updateUserDetails(){
+        if(getUpdatePasswordPayload() != null){
+            presenter.updateUserDetails(getUpdateUserDetailsPayload());
+        }
+    }
+
     private boolean isFieldsCompleted() {
         boolean rv = true;
         String newPassword = tilNewPassword.getEditText().getText().toString().trim();
@@ -109,6 +125,14 @@ public class UpdatePasswordFragment extends BaseFragment implements UpdatePasswo
         payload.setPassword(tilNewPassword.getEditText().getText().toString().trim());
         payload.setRepeatPassword(tilConfirmNewPassword.getEditText().getText().toString().trim());
         return payload;
+    }
+
+    private UpdateUserDetailsPayload getUpdateUserDetailsPayload(){
+        payloadDetail = new UpdateUserDetailsPayload();
+        payloadDetail.setOffice(officeName.getText().toString());
+        payloadDetail.setContactNumber(contactNumber.getText().toString());
+        return payloadDetail;
+
     }
 
     @Override

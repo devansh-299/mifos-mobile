@@ -4,6 +4,7 @@ import org.mifos.mobile.FakeRemoteDataSource;
 import org.mifos.mobile.api.local.DatabaseHelper;
 import org.mifos.mobile.api.local.PreferencesHelper;
 import org.mifos.mobile.models.Charge;
+import org.mifos.mobile.models.UpdateUserDetailsPayload;
 import org.mifos.mobile.models.beneficiary.ThirdPartyBeneficiary;
 import org.mifos.mobile.models.client.Client;
 import org.mifos.mobile.models.guarantor.GuarantorApplicationPayload;
@@ -261,6 +262,11 @@ public class DataManager {
 
     public Observable<ResponseBody> updateAccountPassword(UpdatePasswordPayload payload) {
         return baseApiManager.getUserDetailsService().updateAccountPassword(payload);
+    }
+
+    public Observable<ResponseBody> updateUserDetails (UpdateUserDetailsPayload payload){
+
+        return baseApiManager.getUserDetailsService().updateUserDetails(payload);
     }
 
     public long getClientId() {

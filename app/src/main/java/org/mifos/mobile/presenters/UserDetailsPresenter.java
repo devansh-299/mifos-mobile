@@ -149,7 +149,10 @@ public class UserDetailsPresenter extends BasePresenter<UserDetailsView> {
         if (image == null) {
             return;
         }
-        final byte[] decodedBytes = Base64.decode(image, Base64.DEFAULT);
+
+        ////////////////Using temporary method for checking
+       String mysampleString = context.getString(R.string.sampleString);
+        final byte[] decodedBytes = Base64.decode(mysampleString, Base64.DEFAULT);
         Bitmap decodedBitmap = ImageUtil.getInstance().compressImage(decodedBytes);
         getMvpView().showUserImage(decodedBitmap);
     }
