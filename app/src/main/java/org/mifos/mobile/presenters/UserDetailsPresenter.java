@@ -151,8 +151,8 @@ public class UserDetailsPresenter extends BasePresenter<UserDetailsView> {
         }
 
         ////////////////Using temporary method for checking
-       String mysampleString = context.getString(R.string.sampleString);
-        final byte[] decodedBytes = Base64.decode(mysampleString, Base64.DEFAULT);
+       //String mysampleString = context.getString(R.string.sampleString);
+        final byte[] decodedBytes = Base64.decode(image, Base64.DEFAULT);
         Bitmap decodedBitmap = ImageUtil.getInstance().compressImage(decodedBytes);
         getMvpView().showUserImage(decodedBitmap);
     }
