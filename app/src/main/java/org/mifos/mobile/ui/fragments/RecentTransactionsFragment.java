@@ -62,6 +62,7 @@ public class RecentTransactionsFragment extends BaseFragment implements RecentTr
 
     private List<Transaction> recentTransactionList;
 
+
     public static RecentTransactionsFragment newInstance() {
         RecentTransactionsFragment fragment = new RecentTransactionsFragment();
         Bundle args = new Bundle();
@@ -84,9 +85,8 @@ public class RecentTransactionsFragment extends BaseFragment implements RecentTr
         ButterKnife.bind(this, rootView);
         recentTransactionsPresenter.attachView(this);
         sweetUIErrorHandler = new SweetUIErrorHandler(getActivity(), rootView);
-
         showUserInterface();
-        setToolbarTitle(getString(R.string.recent_transactions));
+
         if (savedInstanceState == null) {
             recentTransactionsPresenter.loadRecentTransactions(false, 0);
         }

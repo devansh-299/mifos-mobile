@@ -74,4 +74,6 @@
     <dimen name="row_header_width">55dp</dimen>
     <dimen name="text_size">14sp</dimen>
     <dimen name="table_header_line">1dp</dimen>
+    <dimen name="fab_tv_marginend">90dp</dimen>
+    <dimen name="fab_call_margin_bottom">186dp</dimen>
 </resources>
