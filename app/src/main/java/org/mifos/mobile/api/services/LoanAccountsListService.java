@@ -1,6 +1,7 @@
 package org.mifos.mobile.api.services;
 
 import org.mifos.mobile.api.ApiEndPoints;
+import org.mifos.mobile.models.Transaction;
 import org.mifos.mobile.models.accounts.loan.LoanAccount;
 import org.mifos.mobile.models.accounts.loan.LoanWithAssociations;
 import org.mifos.mobile.models.accounts.loan.LoanWithdraw;
@@ -49,4 +50,9 @@ public interface LoanAccountsListService {
     @POST(ApiEndPoints.LOANS + "/{loanId}?command=withdrawnByApplicant")
     Observable<ResponseBody> withdrawLoanAccount(@Path(Constants.LOAN_ID) long loanId,
                                                  @Body LoanWithdraw loanWithdraw);
+
+    @GET(ApiEndPoints.LOANS + "/{loanId}/transactions/{transactionId}")
+    Observable<Transaction> getLoanAccountTransaction(
+            @Path("loanId") long loanId,
+            @Path("transactionId") long transactionId);
 }

@@ -13,6 +13,8 @@ public class Constants {
 
     public static final String ACCOUNT_ID = "accountId";
 
+    public static final String TRANSACTION_ID = "transactionId";
+
     public static final String LOAN_ID = "loanId";
 
     public static final String SAVINGS_ID = "savingsId";
@@ -126,4 +128,6 @@ public class Constants {
     public static  final String OUTSTANDING_BALANCE = "outstanding_balance";
 
     public static final String LOAN_REPAYMENT = "loan_repayment";
+    public static final String SAVINGS_TRANSACTION = "savings_account_transaction" ;
+    public static final String LOAN_TRANSACTION = "loan_account_transaction" ;
 }

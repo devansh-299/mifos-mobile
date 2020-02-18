@@ -3,6 +3,7 @@ package org.mifos.mobile.api.services;
 import org.mifos.mobile.api.ApiEndPoints;
 import org.mifos.mobile.models.Page;
 import org.mifos.mobile.models.Transaction;
+import org.mifos.mobile.models.accounts.savings.Transactions;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -19,4 +20,10 @@ public interface RecentTransactionsService {
             @Path("clientId") long clientId,
             @Query("offset") int offset,
             @Query("limit") int limit);
+
+    @GET(ApiEndPoints.LOANS + "/{clientId}/transaction/{transactionId}")
+    Observable<Transaction> getClientTransaction(
+            @Path("clientId") long clientId,
+            @Path("transactionId") long transactionId);
+
 }
