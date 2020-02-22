@@ -40,6 +40,7 @@ import org.mifos.mobile.utils.DatePick;
 import org.mifos.mobile.utils.MFDatePicker;
 import org.mifos.mobile.utils.MaterialDialog;
 import org.mifos.mobile.utils.Network;
+import org.mifos.mobile.utils.RecyclerItemClickListener;
 import org.mifos.mobile.utils.StatusUtils;
 import org.mifos.mobile.utils.Toaster;
 
@@ -59,6 +60,7 @@ import butterknife.OnClick;
 public class SavingAccountsTransactionFragment extends BaseFragment
         implements SavingAccountsTransactionView,
 //        RadioGroup.OnCheckedChangeListener,
+        RecyclerItemClickListener.OnItemClickListener,
         MFDatePicker.OnDatePickListener {
 
     @BindView(R.id.ll_account)
@@ -167,6 +169,8 @@ public class SavingAccountsTransactionFragment extends BaseFragment
         rvSavingAccountsTransaction.setHasFixedSize(true);
         rvSavingAccountsTransaction.setLayoutManager(layoutManager);
         rvSavingAccountsTransaction.setAdapter(transactionListAdapter);
+        rvSavingAccountsTransaction.addOnItemTouchListener(
+                new RecyclerItemClickListener(getActivity(), this));
 
 //        radioGroup.setOnCheckedChangeListener(this);
         mfDatePicker = MFDatePicker.newInstance(this, MFDatePicker.ALL_DAYS, active);
@@ -434,6 +438,20 @@ public class SavingAccountsTransactionFragment extends BaseFragment
                 .setNegativeButton(R.string.cancel)
                 .createMaterialDialog()
                 .show();
+    }
+
+
+    @Override
+    public void onItemClick(View childView, int position) {
+        ((BaseActivity) getActivity()).replaceFragment(SavingsAccountTransactionDetailFragment
+                        .newInstance(transactionsList.get(position).getAccountId(),
+                                transactionsList.get(position).getId())
+                , true, R.id.container);
+    }
+
+    @Override
+    public void onItemLongPress(View childView, int position) {
+
     }
 
     @Override

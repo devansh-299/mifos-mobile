@@ -20,6 +20,7 @@ import org.mifos.mobile.utils.Constants;
 import org.mifos.mobile.utils.DividerItemDecoration;
 import org.mifos.mobile.utils.EndlessRecyclerViewScrollListener;
 import org.mifos.mobile.utils.Network;
+import org.mifos.mobile.utils.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,7 @@ import butterknife.OnClick;
  * @since 09/08/16
  */
 public class RecentTransactionsFragment extends BaseFragment implements RecentTransactionsView,
+        RecyclerItemClickListener.OnItemClickListener,
         SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.rv_recent_transactions)
@@ -240,5 +242,17 @@ public class RecentTransactionsFragment extends BaseFragment implements RecentTr
     public void onDestroyView() {
         super.onDestroyView();
         recentTransactionsPresenter.detachView();
+    }
+
+    @Override
+    public void onItemClick(View childView, int position) {
+        ((BaseActivity) getActivity()).replaceFragment(ClientTransactionDetailFragment
+                        .newInstance(recentTransactionList.get(position).getId())
+                , true, R.id.container);
+    }
+
+    @Override
+    public void onItemLongPress(View childView, int position) {
+
     }
 }

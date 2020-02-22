@@ -23,6 +23,7 @@ import org.mifos.mobile.ui.fragments.base.BaseFragment;
 import org.mifos.mobile.ui.views.LoanAccountsTransactionView;
 import org.mifos.mobile.utils.Constants;
 import org.mifos.mobile.utils.Network;
+import org.mifos.mobile.utils.RecyclerItemClickListener;
 
 import javax.inject.Inject;
 
@@ -38,7 +39,7 @@ import butterknife.OnClick;
  */
 
 public class LoanAccountTransactionFragment extends BaseFragment
-        implements LoanAccountsTransactionView {
+        implements LoanAccountsTransactionView, RecyclerItemClickListener.OnItemClickListener {
 
     @BindView(R.id.layout_error)
     View layoutError;
@@ -124,6 +125,8 @@ public class LoanAccountTransactionFragment extends BaseFragment
         rvLoanTransactions.setHasFixedSize(true);
         rvLoanTransactions.setLayoutManager(layoutManager);
         rvLoanTransactions.setAdapter(transactionsListAdapter);
+        rvLoanTransactions.addOnItemTouchListener(
+                new RecyclerItemClickListener(getActivity(), this));
     }
 
     /**
@@ -191,5 +194,17 @@ public class LoanAccountTransactionFragment extends BaseFragment
         super.onDestroyView();
         hideProgressBar();
         loanAccountsTransactionPresenter.detachView();
+    }
+
+    @Override
+    public void onItemClick(View childView, int position) {
+        ((BaseActivity) getActivity()).replaceFragment(LoanAccountTransactionDetailFragment
+                .newInstance(loanId, loanWithAssociations.getTransactions().get(position).getId())
+                , true, R.id.container);
+    }
+
+    @Override
+    public void onItemLongPress(View childView, int position) {
+
     }
 }

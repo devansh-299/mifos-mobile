@@ -11,10 +11,12 @@ import org.mifos.mobile.ui.activities.PassCodeActivity;
 import org.mifos.mobile.ui.fragments.BeneficiaryApplicationFragment;
 import org.mifos.mobile.ui.fragments.BeneficiaryDetailFragment;
 import org.mifos.mobile.ui.fragments.BeneficiaryListFragment;
+import org.mifos.mobile.ui.fragments.ClientTransactionDetailFragment;
 import org.mifos.mobile.ui.fragments.GuarantorDetailFragment;
 import org.mifos.mobile.ui.fragments.GuarantorListFragment;
 import org.mifos.mobile.ui.fragments.HelpFragment;
 import org.mifos.mobile.ui.fragments.HomeOldFragment;
+import org.mifos.mobile.ui.fragments.LoanAccountTransactionDetailFragment;
 import org.mifos.mobile.ui.fragments.LoanAccountTransactionFragment;
 import org.mifos.mobile.ui.fragments.LoanAccountWithdrawFragment;
 import org.mifos.mobile.ui.fragments.LoanAccountsDetailFragment;
@@ -35,6 +37,7 @@ import org.mifos.mobile.ui.fragments.LoanRepaymentScheduleFragment;
 import org.mifos.mobile.ui.fragments.RecentTransactionsFragment;
 import org.mifos.mobile.ui.fragments.SavingAccountsTransactionFragment;
 import org.mifos.mobile.ui.fragments.SavingsAccountApplicationFragment;
+import org.mifos.mobile.ui.fragments.SavingsAccountTransactionDetailFragment;
 import org.mifos.mobile.ui.fragments.SavingsAccountWithdrawFragment;
 import org.mifos.mobile.ui.fragments.SavingsMakeTransferFragment;
 import org.mifos.mobile.ui.fragments.ThirdPartyTransferFragment;
@@ -129,4 +132,10 @@ public interface ActivityComponent {
     void inject(SavingsAccountWithdrawFragment savingsAccountWithdrawFragment);
 
     void inject(ReviewLoanApplicationFragment reviewLoanApplicationFragment);
+
+    void inject (SavingsAccountTransactionDetailFragment savingsAccountTransactionDetailFragment);
+
+    void inject (LoanAccountTransactionDetailFragment loanAccountTransactionDetailFragment);
+
+    void inject (ClientTransactionDetailFragment clientTransactionDetailFragment);
 }
