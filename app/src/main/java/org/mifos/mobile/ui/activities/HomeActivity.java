@@ -109,7 +109,7 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
             showUserImage(null);
         } else {
             client = savedInstanceState.getParcelable(Constants.USER_DETAILS);
-            detailsPresenter.setUserProfile(preferencesHelper.getUserProfileImage());
+            //detailsPresenter.setUserProfile(preferencesHelper.getUserProfileImage());
             showUserDetails(client);
         }
 

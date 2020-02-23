@@ -221,13 +221,15 @@ public class ClientChargeFragment extends BaseFragment implements
 
     @Override
     public void onItemClick(View childView, int position) {
+        int chargeId = clientChargeList.get(position).getChargeId();
+        ((BaseActivity) getActivity()).replaceFragment(
+                ChargeDetailsFragment.newInstance(id, chargeId, chargeType), true,
+                R.id.container);
 
     }
 
     @Override
-    public void onItemLongPress(View childView, int position) {
-
-    }
+    public void onItemLongPress(View childView, int position) { }
 
     @Override
     public void onDestroyView() {
