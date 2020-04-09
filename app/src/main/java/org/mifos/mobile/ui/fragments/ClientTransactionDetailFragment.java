@@ -1,7 +1,6 @@
 package org.mifos.mobile.ui.fragments;
 
-import android.content.Intent;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -147,13 +146,6 @@ public class ClientTransactionDetailFragment extends BaseFragment implements
             sweetUIErrorHandler.showSweetErrorUI(message, transactionLayout, layoutError);
             Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
         }
-    }
-
-    @OnClick(R.id.tv_help_line_number)
-    void dialHelpLineNumber() {
-        Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:" + getString(R.string.help_line_number)));
-        startActivity(intent);
     }
 
     @OnClick(R.id.btn_try_again)
